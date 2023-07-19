@@ -14,11 +14,10 @@ class Profile(models.Model):
 
 class Post(models.Model):
     owner =  models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    content = models.TextField(max_length=500,blank=True, null=True, default="" )
-
+    content = models.TextField(max_length=2000)
+    created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.title   
+        return self.content[:10]   
 
 class Comment(models.Model):
     owner= models.ForeignKey(User, on_delete=models.CASCADE)
